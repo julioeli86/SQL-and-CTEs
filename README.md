@@ -38,12 +38,14 @@ WHERE custid NOT IN
 
 The below commands provide the orders that are not affiliated with an employee. In addition, the commands check for empid with null values.
 
+```
 SELECT * 
 FROM yOrd 
 WHERE empid NOT IN 
         (SELECT empid 
         FROM yEmp) 
 OR empid is null
+```
 
 To identify the employees with a pay rate that is less than or equal to the average employee pay rate the following commands were executed:
 
