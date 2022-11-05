@@ -65,3 +65,9 @@ WHERE	payrate <=
 	FROM	yemp)
 ORDER BY emp.empid
 ```
+
+The results from the First Entry are shown in Fig. 2 below.
+
+![image](ERD-Mod-10-002.jpg)
+
+
