@@ -218,4 +218,34 @@ The results from the Fourth Entry are shown in Fig. 5 below.
 
 ![image](BAN-702-FIG-005.jpg)
 
+## FIFTH ENTRY
+The following SQL query can count orders in the yORD table by custID using the COUNT group function.
 
+```
+SELECT custID,
+	count(*) CountOfOrders
+FROM yord
+GROUP BY custID
+```
+
+To be able to determine which customer placed the most orders the following SQL code will use the new CTE created to determine the MAX orders by customer:
+
+```
+WITH cteCountOrders AS
+(SELECT		custID,
+			count(*) CountOfOrders
+FROM		yOrd
+GROUP BY	custID)
+
+SELECT		cust.CustID,
+			CustomerName,
+			CountOfOrders 
+FROM		ycust cust
+INNER JOIN	cteCountOrders cteCount
+ON	cust.custid = ctecount.custID
+WHERE	countoforders = 
+		(SELECT MAX(CountOfOrders)
+		FROM	cteCountOrders);
+```
+
+![image](BAN-702-FIG-006.jpg)
