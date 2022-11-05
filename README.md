@@ -248,4 +248,28 @@ WHERE	countoforders =
 		FROM	cteCountOrders);
 ```
 
+The results from the Fifth Entry are shown in Fig. 6 below.
+
 ![image](BAN-702-FIG-006.jpg)
+
+## SIXTH ENTRY
+
+Which customer(s) placed the most orders in June of the current year? The questions can be answered by using a SQL view. The following SQL Code will be able to answer this question.
+
+```
+CREATE VIEW
+vJuneCount AS
+SELECT	Cust.CustID,
+		CustomerName,
+		COUNT(*) CountofOrderLines
+FROM	yCust	cust
+INNER JOIN	yOrd
+ON	cust.custid = yord.CustID
+WHERE month(orderdate) = 6 and year (orderdate) = year(getdate())
+GROUP BY	cust.CustID,  CustomerName
+```
+
+The results from the Sixth Entry are shown in Fig. 7 below.
+
+![image](BAN-702-FIG-007.jpg)
+
