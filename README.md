@@ -159,4 +159,63 @@ The results from the Third Entry are shown in Fig. 4 below.
 
 ![image](BAN-702-FIG-004.jpg)
 
+## FOURTH ENTRY
+The below SQL code creates a view that calculates the average payrate by jobtitleID:
+
+```
+CREATE VIEW vAvgRateByTitle AS
+SELECT 		jobtitleID,
+		AVG(payrate) AveragePayRate
+FROM 		yemp
+GROUP BY jobtitleID;
+```
+
+By executing the below SQL code, the yEMP table will join with the newly created table.
+
+```
+SELECT 		emp.empid,
+		emp.empname,
+		emp.payrate,
+		emp.jobtitleid,
+		vAvgRateByTitle.AveragepayRate
+FROM 		yemp emp
+INNER JOIN 	vAvgRateByTitle
+ON emp.jobtitleid = vAvgRateByTitle.jobtitleid
+ORDER BY 	emp.empid
+```
+
+Add the WHERE clause to the previous query code to show only those employees who have a payrate that is greater than the AveragePayRate.
+
+```
+SELECT emp.empid,
+	emp.empname,
+	emp.payrate,
+	emp.jobtitleid,
+	vAvgRateByTitle.AveragepayRate
+FROM 	yEmp emp
+INNER JOIN vAvgRateByTitle
+ON 	emp.jobtitleid = vAvgRateByTitle.jobtitleid
+WHERE 	payrate > averagepayrate
+ORDER BY emp.empid
+```
+
+The following SQL Code will only display those employees that have a payrate that is less or equal to the AveragePayRate calculated in the new view.
+
+```
+SELECT	emp.empid,
+		emp.empname,
+		emp.payrate,
+		emp.jobtitleid,
+		vAvgRateByTitle.AveragepayRate
+FROM	yemp	emp
+INNER JOIN	vAvgRateByTitle
+ON	emp.jobtitleid = vAvgRateByTitle.jobtitleid
+WHERE	payrate <= AveragePayRate
+ORDER BY emp.empid
+```
+
+The results from the Fourth Entry are shown in Fig. 5 below.
+
+![image](BAN-702-FIG-005.jpg)
+
 
