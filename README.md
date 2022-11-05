@@ -95,4 +95,22 @@ ORDER BY emp.empid
 
 ![image](BAN-702-FIG-003.jpg)
 
+## THIRD ENTRY
+The Third Entry focuses on showing the use of the correlated subquery. The following SELECT commands identify those employees that have a higher payrate than the payrate for their job title.
+
+```
+SELECT EmpID,
+	EmpName,
+	PayRate,
+	jt.Title
+FROM yemp emp
+INNER JOIN yjobtitle jt
+ON emp.jobtitleid = jt.jobtitleid
+WHERE payrate >
+	(SELECT AVG(payrate)
+	FROM yemp empINNER
+	WHERE empinner.jobtitleid = emp.jobtitleid)
+ORDER BY emp.empid
+```
+
 
