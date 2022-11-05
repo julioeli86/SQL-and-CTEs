@@ -68,6 +68,31 @@ ORDER BY emp.empid
 
 The results from the First Entry are shown in Fig. 2 below.
 
-![image](ERD-Mod-10-002.jpg)
+![image](BAN-702-FIG-002.jpg)
+
+## SECOND ENTRY
+Modify the query from the First Entry to include the max and min pay rate for all employees from the SELECT list.
+
+```
+SELECT	EmpID,
+		EmpName,
+		PayRate,
+		jt.Title,
+		(SELECT AVG (payrate)
+		FROM	yEmp) AveragePayRate,
+		(SELECT MAX(payrate)
+		FROM yEmp) MaximumPayRate,
+		(SELECT MIN(payrate)
+		FROM yEmp)	MinimumPayRate
+FROM	yemp	emp
+INNER JOIN  yJobtitle jt
+ON	emp.jobtitleid	= jt.jobtitleID
+WHERE	payrate <= 
+	(SELECT AVG (payrate)
+	FROM	yemp)
+ORDER BY emp.empid
+```
+
+![image](BAN-702-FIG-003.jpg)
 
 
