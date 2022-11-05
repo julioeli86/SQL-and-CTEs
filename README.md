@@ -47,6 +47,7 @@ WHERE empid NOT IN
 OR empid is null
 ```
 
+## FIRST ENTRY
 To identify the employees with a pay rate that is less than or equal to the average employee pay rate the following commands were executed:
 
 ```
