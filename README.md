@@ -3,7 +3,7 @@
 
 A total of six SQL tables were created using the SQL Server Management Studio (SQL-SMS) and following the Entity Relationship Diagram (ERD) provided in Fig.- 1
 
-![image](ERD-Mod-10-002.png)
+![image](ERD-Mod-10-002.jpg)
 
 The below SELECT commands were executed on the SQL-SMS.
 
