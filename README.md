@@ -93,6 +93,8 @@ WHERE	payrate <=
 ORDER BY emp.empid
 ```
 
+The results from the Second Entry are shown in Fig. 3 below.
+
 ![image](BAN-702-FIG-003.jpg)
 
 ## THIRD ENTRY
@@ -132,4 +134,29 @@ WHERE payrate >
 	WHERE empinner.jobtitleid = emp.jobtitleid)
 ORDER BY emp.empid
 ```
+
+The following query provides the employees with a payrate that is less than or equal to the average payrate for their job title.
+
+```
+SELECT	EmpID,
+		EmpName,
+		PayRate,
+		jt.Title,
+		(SELECT AVG(payrate)
+		FROM	yemp empSELECT
+		WHERE	empSELECT.jobtitleid = emp.jobtitleid)	AveragePayRate
+FROM	yemp emp
+INNER JOIN	yjobtitle jt
+ON	emp.jobtitleid = jt.jobtitleid
+WHERE	payrate <= 
+		(SELECT AVG (payrate)
+		FROM	yemp empINNER
+		WHERE	empinner.jobtitleid = emp.jobtitleid)
+ORDER BY emp.empid
+```
+
+The results from the Third Entry are shown in Fig. 4 below.
+
+![image](BAN-702-FIG-004.jpg)
+
 
