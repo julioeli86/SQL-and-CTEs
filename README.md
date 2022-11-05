@@ -113,4 +113,23 @@ WHERE payrate >
 ORDER BY emp.empid
 ```
 
+The following query adds the average pay rate for the corresponding job title.
+
+```
+SELECT EmpID,
+	EmpName,
+	PayRate,
+	jt.Title,
+	(SELECT AVG(payrate)
+	FROM yemp empSELECT
+	WHERE empSELECT.jobtitleid = emp.jobtitleid) AveragePayRate
+FROM yemp emp
+INNER JOIN yjobtitle jt
+ON emp.jobtitleid = jt.jobtitleid
+WHERE payrate >
+	(SELECT AVG(payrate)
+	FROM yemp empINNER
+	WHERE empinner.jobtitleid = emp.jobtitleid)
+ORDER BY emp.empid
+```
 
