@@ -5,7 +5,7 @@ A total of six SQL tables were created using the SQL Server Management Studio (S
 
 ![image](ERD-Mod-10-002.jpg)
 
-The below SELECT commands were executed on the SQL-SMS.
+The below SELECT commands were executed on the SQL Server Management Studio.
 
 ```
 SELECT * FROM yEmp; 
